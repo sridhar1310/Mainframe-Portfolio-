@@ -104,7 +104,11 @@ export class PortfolioDataService {
         'Name      : Sridhar G',
         'Role      : Mainframe Developer / Jr. Software Engineer',
         '',
+<<<<<<< HEAD
         'Mobile    : +91 XXXXX-XXXXX',
+=======
+        'Mobile    : +91 XXXX-XXXXX',
+>>>>>>> 0f219a7d (chore: mask mobile number in contact information)
         'Email     : sridharg@myyahoo.com',
         'Location  : Coimbatore, India',
         '',
