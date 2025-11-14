@@ -1,0 +1,10 @@
+
+<div class="text-[#00FF00] mt-auto pt-2 flex justify-between text-xs md:text-sm">
+  <span>PF1=HELP</span>
+  @if (showScroll()) {
+    <span>PF7=UP&nbsp;&nbsp;&nbsp;PF8=DOWN</span>
+  } @else {
+    <span></span>
+  }
+  <span (click)="exit()" class="cursor-pointer hover:bg-[#00FF00] hover:text-black px-1">PF3=EXIT</span>
+</div>

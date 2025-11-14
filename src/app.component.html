@@ -1,0 +1,31 @@
+
+<div class="h-screen w-screen bg-black text-[#00FF00] font-mono p-2 md:p-4 lg:p-6 flex items-center justify-center">
+  <div class="w-full h-full max-w-[1000px] max-h-[700px] overflow-hidden">
+    @switch (currentView()) {
+      @case ('login') {
+        <app-login-screen (loginSuccess)="onLoginSuccess()" />
+      }
+      @case ('menu') {
+        <app-main-menu (optionSelected)="onOptionSelected($event)" (exit)="goBack()" />
+      }
+      @case ('skills') {
+        <app-skills-panel (exit)="goBack()" />
+      }
+      @case ('about') {
+        <app-content-panel [data]="contentData()" (exit)="goBack()" />
+      }
+      @case ('experience') {
+        <app-content-panel [data]="contentData()" (exit)="goBack()" />
+      }
+      @case ('projects') {
+        <app-content-panel [data]="contentData()" (exit)="goBack()" />
+      }
+      @case ('education') {
+        <app-content-panel [data]="contentData()" (exit)="goBack()" />
+      }
+      @case ('contact') {
+        <app-content-panel [data]="contentData()" (exit)="goBack()" />
+      }
+    }
+  </div>
+</div>

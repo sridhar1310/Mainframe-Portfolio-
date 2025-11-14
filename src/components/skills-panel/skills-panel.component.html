@@ -1,0 +1,45 @@
+
+<div class="h-full w-full border-2 border-[#00FF00] p-4 flex flex-col text-sm md:text-base whitespace-pre">
+  <div class="text-center font-bold">
+    <p>┌──────────────────────────────────────────────────────────┐</p>
+    <p>│                  TECHNICAL PROFICIENCIES                 │</p>
+    <p>└──────────────────────────────────────────────────────────┘</p>
+  </div>
+
+  <div class="mt-4 flex-grow overflow-y-auto pr-2">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4">
+      <!-- Column 1 -->
+      <div>
+        <p class="font-bold underline">LANGUAGES/DATABASES</p>
+        @for(skill of skillsCol1; track skill) {
+          <p>- {{ skill }}</p>
+        }
+      </div>
+      <!-- Column 2 -->
+      <div>
+        <p class="font-bold underline">TOOLS/PLATFORMS</p>
+        @for(skill of skillsCol2; track skill) {
+          <p>- {{ skill }}</p>
+        }
+      </div>
+      <!-- Column 3 -->
+      <div>
+        <p class="font-bold underline">DEBUG/SCHEDULING</p>
+        @for(skill of skillsCol3; track skill) {
+          <p>- {{ skill }}</p>
+        }
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <p class="font-bold underline">UTILITIES</p>
+      <p>{{ utilities.join(', ') }}</p>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <p>Press PF3 or ESC to return to main menu.</p>
+  </div>
+
+  <app-terminal-footer (onExit)="onExit()" />
+</div>

@@ -1,0 +1,43 @@
+<div class="h-full w-full border-2 border-[#00FF00] p-4 flex flex-col text-sm md:text-base whitespace-pre">
+  <div class="text-center font-bold">
+    <p>┌──────────────────────────────────────────────────────────┐</p>
+    <p>│          SRIDHAR G - ISPF PRIMARY OPTION MENU          │</p>
+    <p>└──────────────────────────────────────────────────────────┘</p>
+  </div>
+
+  <div class="mt-4">
+    <label for="option">Option ===> </label>
+    <input
+      #optionInput
+      type="text"
+      id="option"
+      name="option"
+      [value]="selectedOption()"
+      (input)="onInput($event)"
+      (keydown.enter)="submitSelection()"
+      class="bg-black text-[#00FF00] border-none outline-none w-12"
+      maxlength="1"
+      (focus)="$event.target.select()"
+    />
+    <app-blinking-cursor />
+  </div>
+
+  <div class="mt-6 space-y-2">
+    <p>   1   ABOUT       - Professional Summary</p>
+    <p>   2   SKILLS      - Technical Proficiencies</p>
+    <p>   3   EXPERIENCE  - Work History and Responsibilities</p>
+    <p>   4   PROJECTS    - Key Project Highlights</p>
+    <p>   5   EDUCATION   - Education and Certifications</p>
+    <p>   6   CONTACT     - Contact Information</p>
+    <p>   X   EXIT        - Logoff</p>
+  </div>
+
+  <div class="mt-auto">
+    <p>------------------------------------------------------------</p>
+    <p>     Mainframe Developer / Jr. Software Engineer            </p>
+    <p>     Cognizant Technology Solutions                         </p>
+    <p>------------------------------------------------------------</p>
+  </div>
+  
+  <app-terminal-footer (onExit)="onExit()" />
+</div>

@@ -1,0 +1,24 @@
+
+@if(data(); as panelData) {
+  <div class="h-full w-full border-2 border-[#00FF00] p-4 flex flex-col text-sm md:text-base">
+    <div class="text-center font-bold">
+      <p>┌──────────────────────────────────────────────────────────┐</p>
+      <p>│{{ ' ' + panelData.title.padEnd(56, ' ') + ' ' }}│</p>
+      <p>└──────────────────────────────────────────────────────────┘</p>
+    </div>
+
+    <div class="mt-4 flex-grow overflow-y-auto pr-2">
+      <div class="whitespace-pre-wrap">
+        @for(line of panelData.lines; track line; let i = $index) {
+          <p>{{ line }}</p>
+        }
+      </div>
+    </div>
+    
+    <div class="mt-4">
+        <p>Press PF3 or ESC to return to main menu.</p>
+    </div>
+
+    <app-terminal-footer (onExit)="onExit()" [showScroll]="true" />
+  </div>
+}

@@ -1,0 +1,36 @@
+<div class="h-full w-full border-2 border-[#00FF00] p-4 flex flex-col justify-center items-center text-sm md:text-base whitespace-pre">
+  <div class="text-center">
+    <p>
+      _         _         _         _
+    </p>
+    <p>
+      /(         /         /(         /
+    </p>
+    <p>
+      |/         |/         |/         |/
+    </p>
+    <p>
+      /   ) O   /   ) O   /   ) O   /   ) O
+    </p>
+    <p>
+      /   / /   /   / /   /   / /   /   / /
+    </p>
+    <p>
+      /   / /   /   / /   /   / /   /   / /
+    </p>
+  </div>
+  <p class="mt-4 text-center">IBM (R) 3270 INFORMATION DISPLAY SYSTEM</p>
+  <p class="mt-8 text-center">{{ typedText() }}</p>
+  
+  @if(showForm()) {
+    <div class="mt-8 text-center flex flex-col items-center">
+      <p>ENTER USERID - SRIDHARG</p>
+      <div class="mt-2">
+        <span>ENTER PASSWORD - </span>
+        <span class="bg-[#00FF00]">        </span>
+        <app-blinking-cursor />
+      </div>
+      <p class="mt-6 cursor-pointer" (click)="onSubmitClick($event)">PRESS <span class="border border-[#00FF00] px-1">ENTER</span> TO LOGON</p>
+    </div>
+  }
+</div>
