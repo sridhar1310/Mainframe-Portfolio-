@@ -14,7 +14,7 @@
       font-family: 'IBM Plex Mono', monospace;
       background-color: #000000;
       color: #00FF00;
-      overflow: hidden; /* Prevent scrolling on the body itself */
+      overflow: auto; /* allow scrolling so error overlay is reachable */
     }
     /* Simple blinking cursor animation */
     @keyframes blink {
@@ -66,7 +66,22 @@
     });
     
     // 4. Load and run the main application file
-    System.import('./index.tsx').catch(function(err){ console.error(err); });
+    System.import('./index.tsx').catch(function(err){
+      console.error(err);
+      displayError(err && err.stack ? err.stack : String(err));
+    });
+  </script>
+
+  <script>
+    // Small error overlay so runtime/load errors are visible on GitHub Pages
+    function displayError(msg){
+      var pre = document.createElement('pre');
+      pre.style.cssText = 'position:fixed;left:10px;top:10px;right:10px;max-height:60vh;overflow:auto;background:#111;color:#ff6666;padding:12px;border:2px solid #ff6666;z-index:2147483647;font-family:monospace;white-space:pre-wrap;';
+      pre.textContent = 'Application error:\\n' + (msg || 'unknown');
+      document.body.appendChild(pre);
+    }
+    window.addEventListener('error', function(ev){ displayError(ev.error && ev.error.stack ? ev.error.stack : ev.message); });
+    window.addEventListener('unhandledrejection', function(ev){ displayError(ev.reason && ev.reason.stack ? ev.reason.stack : ev.reason); });
   </script>
 <script type="importmap">
 {
