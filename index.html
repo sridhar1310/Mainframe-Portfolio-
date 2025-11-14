@@ -14,9 +14,8 @@
       font-family: 'IBM Plex Mono', monospace;
       background-color: #000000;
       color: #00FF00;
-      overflow: auto; /* allow scrolling so error overlay is reachable */
+      overflow: auto;
     }
-    /* Simple blinking cursor animation */
     @keyframes blink {
       from, to { opacity: 1; }
       50% { opacity: 0; }
@@ -26,81 +25,9 @@
       font-weight: bold;
     }
   </style>
-  
-  <!-- 1. SystemJS Core -->
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.15.1/dist/system.min.js"></script>
-  <!-- 2. SystemJS TypeScript Plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/systemjs-plugin-typescript@10.0.1/plugin.min.js"></script>
-  
-  <script>
-    // 3. Configure SystemJS
-    System.config({
-     baseURL: './',
-      transpiler: "ts", // Use the TypeScript plugin
-      packages: {
-        "src": {
-          defaultExtension: "ts" // Assume .ts for files in src
-        },
-        "components": {
-           defaultExtension: "ts" // Assume .ts for files in components
-        }
-      },
-      map: {
-        "ts": "https://cdn.jsdelivr.net/npm/systemjs-plugin-typescript@10.0.1/plugin.min.js",
-        "typescript": "https://cdn.jsdelivr.net/npm/typescript@5.5.3/lib/typescript.min.js",
-        
-        // Angular dependencies
-        "@angular/core": "https://esm.sh/@angular/core@^18.0.0",
-        "@angular/common": "https://esm.sh/@angular/common@^18.0.0",
-        "@angular/compiler": "https://esm.sh/@angular/compiler@^18.0.0",
-        "@angular/platform-browser": "https://esm.sh/@angular/platform-browser@^18.0.0",
-        "rxjs": "https://esm.sh/rxjs@^7.8.0",
-        "rxjs/operators": "https://esm.sh/rxjs@^7.8.0/operators"
-      },
-      // Meta configuration for TSX files
-      meta: {
-        '*.tsx': {
-          loader: 'ts'
-        }
-      }
-    });
-    
-    // 4. Load and run the main application file
-    System.import('./index.tsx').catch(function(err){
-      console.error(err);
-      displayError(err && err.stack ? err.stack : String(err));
-    });
-  </script>
-
-  <script>
-    // Small error overlay so runtime/load errors are visible on GitHub Pages
-    function displayError(msg){
-      var pre = document.createElement('pre');
-      pre.style.cssText = 'position:fixed;left:10px;top:10px;right:10px;max-height:60vh;overflow:auto;background:#111;color:#ff6666;padding:12px;border:2px solid #ff6666;z-index:2147483647;font-family:monospace;white-space:pre-wrap;';
-      pre.textContent = 'Application error:\\n' + (msg || 'unknown');
-      document.body.appendChild(pre);
-    }
-    window.addEventListener('error', function(ev){ displayError(ev.error && ev.error.stack ? ev.error.stack : ev.message); });
-    window.addEventListener('unhandledrejection', function(ev){ displayError(ev.reason && ev.reason.stack ? ev.reason.stack : ev.reason); });
-  </script>
-<script type="importmap">
-{
-  "imports": {
-    "rxjs": "https://aistudiocdn.com/rxjs@^7.8.2?conditions=es2015",
-    "rxjs/operators": "https://aistudiocdn.com/rxjs@^7.8.2/operators?conditions=es2015",
-    "rxjs/ajax": "https://aistudiocdn.com/rxjs@^7.8.2/ajax?conditions=es2015",
-    "rxjs/webSocket": "https://aistudiocdn.com/rxjs@^7.8.2/webSocket?conditions=es2015",
-    "rxjs/testing": "https://aistudiocdn.com/rxjs@^7.8.2/testing?conditions=es2015",
-    "rxjs/fetch": "https://aistudiocdn.com/rxjs@^7.8.2/fetch?conditions=es2015",
-    "@angular/compiler": "https://next.esm.sh/@angular/compiler@^20.3.11?external=rxjs",
-    "@angular/platform-browser": "https://next.esm.sh/@angular/platform-browser@^20.3.11?external=rxjs",
-    "@angular/core": "https://next.esm.sh/@angular/core@^20.3.11?external=rxjs",
-    "@angular/common": "https://next.esm.sh/@angular/common@^20.3.11?external=rxjs"
-  }
-}
-</script>
 </head>
 <body class="bg-black text-[#00FF00]">
   <app-root></app-root>
+  <script type="module" src="./src/main.tsx"></script>
 </body>
 </html>
